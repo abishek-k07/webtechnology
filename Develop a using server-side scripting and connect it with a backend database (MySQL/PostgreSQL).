@@ -1,0 +1,107 @@
+<?php
+// ----- CONFIGURATION -----
+$host = 'localhost';
+$db   = 'user_demo';
+$user = 'root';      // Replace with your MySQL username
+$pass = '';          // Replace with your MySQL password
+
+// ----- CONNECTION -----
+$conn = new mysqli($host, $user, $pass, $db);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// ----- HANDLE FORM SUBMISSION -----
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name  = $conn->real_escape_string($_POST['name']);
+    $email = $conn->real_escape_string($_POST['email']);
+
+    $sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
+    $conn->query($sql);
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+    }
+
+    table {
+      width: 80%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Register User</h1>
+
+  <form method="post" action="">
+    <input type="text" name="name" placeholder="Enter your name" required />
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2 style="text-align:center;">Registered Users</h2>
+  <table>
+    <tr>
+      <th>ID</th><th>Name</th><th>Email</th>
+    </tr>
+
+    <?php
+      $result = $conn->query("SELECT * FROM users ORDER BY id DESC");
+
+      if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              echo "<tr><td>{$row['id']}</td><td>{$row['name']}</td><td>{$row['email']}</td></tr>";
+          }
+      } else {
+          echo "<tr><td colspan='3'>No users found</td></tr>";
+      }
+
+      $conn->close();
+    ?>
+  </table>
+
+</body>
+</html>
