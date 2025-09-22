@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Clock & Framework Comparison</title>
+
+  <!-- Styles -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    #clock {
+      font-size: 2.5rem;
+      color: #2196f3;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 90%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 600px) {
+      table, th, td {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Web Technologies Showcase</h1>
+
+  <!-- Real-Time Clock -->
+  <h2>🕒 Real-Time Clock</h2>
+  <div id="clock">Loading time...</div>
+
+  <!-- Framework Comparison -->
+  <h2>🔍 React vs Vue: Framework Comparison</h2>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>React</th>
+      <th>Vue</th>
+    </tr>
+    <tr>
+      <td>Architecture</td>
+      <td>Component-based, library (focus on UI)</td>
+      <td>Component-based, full framework (MVVM pattern)</td>
+    </tr>
+    <tr>
+      <td>Learning Curve</td>
+      <td>Steeper (JSX, more setup)</td>
+      <td>Gentle (HTML, CSS, JS separation)</td>
+    </tr>
+    <tr>
+      <td>State Management</td>
+      <td>Uses libraries like Redux, Context API</td>
+      <td>Built-in reactivity system, Vuex (optional)</td>
+    </tr>
+    <tr>
+      <td>Use Cases</td>
+      <td>Large-scale applications, SPAs</td>
+      <td>Small to medium apps, quick prototyping</td>
+    </tr>
+    <tr>
+      <td>Community & Ecosystem</td>
+      <td>Very large and mature</td>
+      <td>Growing steadily, strong in Asia</td>
+    </tr>
+  </table>
+
+  <!-- JavaScript for Real-Time Clock -->
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    // Initial call and interval setup
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
