@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styling Showcase</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Internal CSS (Simulates External File for Demo Purposes) -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin: 2rem;
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .highlight {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    #footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CSS Styling Showcase</h1>
+    <p>Demonstrating various CSS techniques in one HTML file</p>
+  </header>
+
+  <div class="container">
+    <!-- Inline Style -->
+    <div class="card" style="border-left: 5px solid #2196F3;">
+      <h2>Inline Style</h2>
+      <p>This card uses <span class="highlight">inline CSS</span> for the left border.</p>
+    </div>
+
+    <!-- Class-Based Style -->
+    <div class="card">
+      <h2>Class Styling</h2>
+      <p>This card uses a <span class="highlight">CSS class</span> for all styles.</p>
+    </div>
+
+    <!-- ID-Based Style -->
+    <div class="card" id="special">
+      <h2>ID Styling</h2>
+      <p>The footer below is styled using an <span class="highlight">ID selector</span>.</p>
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; 2025 Styling Showcase. All Rights Reserved.
+  </div>
+
+</body>
+</html>
